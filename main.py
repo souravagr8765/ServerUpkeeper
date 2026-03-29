@@ -4,7 +4,7 @@ import atexit
 import sys
 from dotenv import load_dotenv
 import os
-import logging
+import loki_logger as logger
 
 LOG_FILE = "./Upkeeper.log"
 # Setup logging
