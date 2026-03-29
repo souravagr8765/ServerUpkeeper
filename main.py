@@ -33,23 +33,23 @@ def ping(url):
         logger.error(f"{APP_NAMES[NHOST_SUBDOMAINS.index(NHOST_SUBDOMAIN)]} FAILED - {e}")
 
 
-def cleanup():
-    """Terminate background processes on exit."""
-    global _loki_process
-    if _loki_process is not None:
-        logger.info("Terminating background Loki logger...")
-        try:
-             # Send termination signal via log file
-             logger.info("LOKI_LOGGER_TERMINATE")
-             _loki_process.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            _loki_process.kill()
-        except Exception as e:
-            logger.error(f"Error terminating Loki logger: {e}")
-        logger.info("Loki logger terminated.")
+# def cleanup():
+#     """Terminate background processes on exit."""
+#     global _loki_process
+#     if _loki_process is not None:
+#         logger.info("Terminating background Loki logger...")
+#         try:
+#              # Send termination signal via log file
+#              logger.info("LOKI_LOGGER_TERMINATE")
+#              _loki_process.wait(timeout=5)
+#         except subprocess.TimeoutExpired:
+#             _loki_process.kill()
+#         except Exception as e:
+#             logger.error(f"Error terminating Loki logger: {e}")
+#         logger.info("Loki logger terminated.")
 
-# Register the cleanup function to run automatically when the script exits
-atexit.register(cleanup)
+# # Register the cleanup function to run automatically when the script exits
+# atexit.register(cleanup)
 
 if __name__ == "__main__":
     
